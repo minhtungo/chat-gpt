@@ -30,6 +30,11 @@ const Chat = ({ chatId }: Props) => {
 
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
+      {messages?.empty && (
+        <>
+          <p className='mt-10 text-center'>Type a prompt to get started!</p>
+        </>
+      )}
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
       ))}
