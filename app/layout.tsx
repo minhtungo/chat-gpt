@@ -2,7 +2,7 @@ import SideBar from '@/components/SideBar';
 import './globals.css';
 import { getServerSession } from 'next-auth';
 
-import { authOptions } from '@/pages/api/auth/[...auth]';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Login from '@/components/Login';
 import SessionProvider from '@/components/SessionProvider';
 
