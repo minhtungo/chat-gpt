@@ -1,6 +1,6 @@
 import SideBar from '@/components/SideBar';
 import './globals.css';
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Login from '@/components/Login';
