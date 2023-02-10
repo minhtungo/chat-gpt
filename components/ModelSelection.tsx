@@ -21,9 +21,16 @@ const ModelSelection = () => {
         options={models?.modelOptions}
         isLoading={isLoading}
         menuPosition='fixed'
-        classNames={{
-          control: (state) => 'bg-gray-700/30 border-gray-700/30',
-        }}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+            primary25: 'blue',
+            primary: 'black',
+          },
+        })}
+        onChange={(e) => setModel(e.value)}
       />
     </div>
   );
