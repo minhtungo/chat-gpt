@@ -16,7 +16,7 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <head />
-      <body className='flex'>
+      <body className='flex text-gray-50'>
         <SessionProvider session={session}>
           {!session ? (
             <Login />
