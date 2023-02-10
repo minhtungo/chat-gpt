@@ -1,5 +1,7 @@
+import admin from 'firebase-admin';
 import query from '@/lib/queryApi';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import adminDb from '@/firebaseAdmin';
 
 type Data = { answer: string };
 
@@ -18,7 +20,21 @@ export default async function handler(
 
   const message: Message = {
     text: response || 'Unable to get completion',
+    createdAt: admin.firestore.Timestamp.now(),
+    user: {
+      _id: 'ChatGPT',
+      name: 'ChatGPT',
+      avatar: 'https://pbs.twimg.com/media/EMwMcjrUYAAIqnb.jpg',
+    },
   };
 
-  res.status(200).json({ answer: 'Hello World' });
+  await adminDb
+    .collection('users')
+    .doc(session.user?.email)
+    .collection('chats')
+    .doc(chatId)
+    .collection('messages')
+    .add(message);
+
+  res.status(200).json({ answer: message.text });
 }
